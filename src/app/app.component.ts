@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { MatDialog } from "@angular/material";
+import { SetClockDialogComponent } from './set-clock-dialog/set-clock-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,15 @@ export class AppComponent {
   public startStop:string = 'Start';
   public interval;
   public paused = true;
+  public audio = new Audio();
+
+
+  constructor(private dialog: MatDialog) {
+    this.audio.src = '../assets/buzzer.wav';
+  }
+
+
+
 
   public setHomeScore(newScore:number) {
     this.homeScore = newScore;
@@ -57,10 +68,26 @@ export class AppComponent {
     }
   }
 
-  public playBuzzer(){
-    let audio = new Audio();
-    audio.src = '../assets/buzzer.wav';
-    audio.load();
-    audio.play();
+  public playBuzzer() {
+    this.audio.load();
+    this.audio.play();
+  }
+
+  public onSetClock() {
+    this.pauseTimer();
+    this.dialog.open(SetClockDialogComponent).afterClosed().subscribe(
+      data => {
+        if(data) {
+          let time = 0;
+          if (data.minutes !== "") {
+            time += data.minutes * 60;
+          }
+          if (data.seconds !== "") {
+            time += data.seconds;
+          }
+          this.timeLeft = time;
+        }
+      }
+    )
   }
 }

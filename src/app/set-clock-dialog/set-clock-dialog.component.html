@@ -1,0 +1,17 @@
+<form [formGroup]="timeForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+      <label class="label">Minutes</label>
+      <div class="control">
+        <input class="input" type="number" min="0" formControlName="minutes">
+      </div>
+  </div>
+
+  <div class="field">
+      <label class="label">Seconds</label>
+      <div class="control">
+        <input class="input" type="number" min="0" max="59" formControlName="seconds">
+      </div>
+  </div>
+
+  <button class="button" type="submit" [disabled]="!timeForm.valid">Set Clock</button>
+</form>
