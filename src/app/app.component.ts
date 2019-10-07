@@ -37,6 +37,9 @@ export class AppComponent {
       case 'r':
         this.onReset();
         break;
+      case 's':
+        this.onSetClock();
+        break;
     }
   }
 
