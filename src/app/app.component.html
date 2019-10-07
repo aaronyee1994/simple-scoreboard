@@ -16,13 +16,13 @@
 </div>
 
 <div class="columns">
-  <button type="button" class="column button" (click)="setHomeScore(homeScore - 1)">Home -1</button>
-  <button type="button" class="column button" (click)="setHomeScore(homeScore + 1)">Home +1</button>
-  <button type="button" class="column button" (click)="setAwayScore(awayScore - 1)">Away -1</button>
-  <button type="button" class="column button" (click)="setAwayScore(awayScore + 1)">Away +1</button>
+  <button type="button" class="column button" (click)="setHomeScore(homeScore - 1)"><b>Home -1</b></button>
+  <button type="button" class="column button" (click)="setHomeScore(homeScore + 1)"><b>Home +1</b> [H]</button>
+  <button type="button" class="column button" (click)="setAwayScore(awayScore - 1)"><b>Away -1</b></button>
+  <button type="button" class="column button" (click)="setAwayScore(awayScore + 1)"><b>Away +1</b> [A]</button>
 </div>
 <div class="columns">
-    <button type="button" class="column button" (click)="onReset()">Reset</button>
-    <button type="button" class="column button" (click)="onSetClock()">Set Clock</button>
-    <button type="button" class="column button" (click)="onStartStop()">{{ startStop }}</button>
+    <button type="button" class="column button" (click)="onReset()"><b>Reset</b> [R]</button>
+    <button type="button" class="column button" (click)="onSetClock()"><b>Set Clock</b></button>
+    <button type="button" class="column button" (click)="onStartStop()"><b>{{ startStop }}</b> [space]</button>
 </div>

@@ -20,7 +20,25 @@ export class AppComponent {
   constructor(private dialog: MatDialog) {
     this.audio.src = '../assets/buzzer.wav';
   }
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+    console.log(event.key);
 
+    switch(event.key){
+      case ' ':
+        this.onStartStop();
+        break;
+      case 'a':
+        this.setAwayScore(this.awayScore + 1);
+        break;
+      case 'h':
+        this.setHomeScore(this.homeScore + 1);
+        break;
+      case 'r':
+        this.onReset();
+        break;
+    }
+  }
 
 
 
