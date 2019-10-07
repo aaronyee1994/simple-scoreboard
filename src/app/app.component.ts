@@ -36,7 +36,8 @@ export class AppComponent {
         this.timeLeft--;
       } 
       else {
-        //play alarm
+        this.playBuzzer();
+        this.pauseTimer();
       }
     },1000)
   }
@@ -47,7 +48,7 @@ export class AppComponent {
     this.startStop = 'Start';
   }
 
-  onStartStop() {
+  public onStartStop() {
     if (this.paused) {
       this.startTimer();
     }
@@ -56,4 +57,10 @@ export class AppComponent {
     }
   }
 
+  public playBuzzer(){
+    let audio = new Audio();
+    audio.src = '../assets/buzzer.wav';
+    audio.load();
+    audio.play();
+  }
 }
