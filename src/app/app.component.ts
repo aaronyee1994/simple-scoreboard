@@ -15,6 +15,7 @@ export class AppComponent {
   public interval;
   public paused = true;
   public audio = new Audio();
+  dialogRef: any;
 
 
   constructor(private dialog: MatDialog) {
@@ -95,8 +96,9 @@ export class AppComponent {
   }
 
   public onSetClock() {
+    if (this.dialogRef) return;
     this.pauseTimer();
-    this.dialog.open(SetClockDialogComponent).afterClosed().subscribe(
+    this.dialogRef = this.dialog.open(SetClockDialogComponent).afterClosed().subscribe(
       data => {
         if(data) {
           let time = 0;
@@ -108,6 +110,7 @@ export class AppComponent {
           }
           this.timeLeft = time;
         }
+        this.dialogRef = undefined;
       }
     )
   }
