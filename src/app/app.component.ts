@@ -29,9 +29,11 @@ export class AppComponent {
       case ' ':
         this.onStartStop();
         break;
+      case 'p':
       case 'a':
         this.setAwayScore(this.awayScore + 1);
         break;
+      case 'q':
       case 'h':
         this.setHomeScore(this.homeScore + 1);
         break;
